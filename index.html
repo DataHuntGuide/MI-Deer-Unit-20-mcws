@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d484c311cb37feeb07a83c34026d81b8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@master/folium/templates/leaflet_heat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+</head>
+<body>
+    
+    
+<script>
+    function addClickHandler(map) {
+        map.on('click', function(e) {
+            var lat = e.latlng.lat.toFixed(5);
+            var lng = e.latlng.lng.toFixed(5);
+            var popup = L.popup()
+                .setLatLng(e.latlng)
+                .setContent(lat + ", " + lng)
+                .openOn(map);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        for (let key in window) {
+            if (window[key] instanceof L.Map) {
+                addClickHandler(window[key]);
+                break;
+            }
+        }
+    });
+</script>
+    
+            <div class="folium-map" id="map_d484c311cb37feeb07a83c34026d81b8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d484c311cb37feeb07a83c34026d81b8 = L.map(
+                "map_d484c311cb37feeb07a83c34026d81b8",
+                {
+                    center: [44.62997294117647, -84.49554470588235],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e3753edb4d6642041e80c53ba17ee08a = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+                {"attribution": "Tiles \u00a9 Esri \u2014 Source: Esri, Garmin, USGS, NPS", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_d484c311cb37feeb07a83c34026d81b8);
+        
+    
+            var heat_map_9a61c1c1888f9a86b15b6e59bf21d96d = L.heatLayer(
+                [[44.661, -84.49877], [44.65409, -84.50881], [44.66711, -84.50654], [44.66038, -84.49945], [44.65136, -84.51642], [44.51948, -84.7587], [44.63857, -84.51698], [44.63998, -84.50241], [44.6091, -84.46815], [44.59198, -84.47884], [44.56467, -84.49321], [44.5607, -84.50172], [44.66027, -84.39017], [44.66033, -84.38858], [44.65711, -84.45974], [44.65361, -84.46507], [44.6598, -84.4707]],
+                {"blur": 15, "maxZoom": 18, "minOpacity": 0.5, "radius": 25}
+            ).addTo(map_d484c311cb37feeb07a83c34026d81b8);
+        
+    
+            var tile_layer_444d8793daaa318a407f45b36189f757 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_cf325492c3be5e3da3d0308435dd0e06 = new L.Control.MiniMap(
+                tile_layer_444d8793daaa318a407f45b36189f757,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "toggleDisplay": true, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_d484c311cb37feeb07a83c34026d81b8.addControl(mini_map_cf325492c3be5e3da3d0308435dd0e06);
+        
+</script>
+</html>
